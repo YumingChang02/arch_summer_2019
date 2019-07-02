@@ -15,4 +15,5 @@ ENV PATH="$PATH:/tmp/bat"
 
 WORKDIR /target
 
-CMD [ "bash" ]
+ENTRYPOINT [ "/tmp/bat/bat" ]
+CMD [ "/tmp/bat/README.md" ]
