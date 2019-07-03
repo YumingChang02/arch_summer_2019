@@ -1,0 +1,15 @@
+[Unit]
+Description=Mount File for SSHFS
+Requires=systemd-networkd.service
+After=network-online.target
+Wants=network-online.target
+
+[Mount]
+What=Remote_user@Remote_ip:/Remote/Path/to/Mount
+Where=/path/to/mount
+Type=fuse.sshfs
+Options=allow_other,reconnect,IdentityFile=/home/{user name here}/.ssh/id_rsa
+TimeoutSec=3
+
+[Install]
+WantedBy=multi-user.target

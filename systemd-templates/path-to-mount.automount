@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount SSHFS automatically
+
+[Automount]
+Where=/path/to/mount
+# have to be same as name ( path-to-mount.automount )
+TimeoutIdleSec=900
+
+[Install]
+WantedBy=multi-user.target
+
