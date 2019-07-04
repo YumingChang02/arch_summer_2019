@@ -1,0 +1,18 @@
+#!/bin/bash
+file="/home/markchang/.queue" # file name used as queue
+if [ ! -f "$FILE" ]; then
+	touch $file
+fi
+
+for var in "$@"
+do
+	if [ $( grep -c $var $file ) -eq 0 ]
+	then # no same line as input inqueue, adding to queue
+    	echo "$var" >> $file
+		echo "added to list, currently $( wc -l < $file ) in queue"
+	else # exists in queue
+		echo "already in list, currently $( wc -l < $file ) in queue"
+	fi
+done
+
+#( setsid /usr/bin/flock --nonblock {YOUR_COMMAND_HERE} & )
